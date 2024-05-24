@@ -1,15 +1,20 @@
-<div>
-  <h1>Weather</h1>
-
-  <form action="">
-    <input type="text" name="city" placeholder="Enter a city name" [(ngModel)]="city">
-    <button (click)="getWeather()">Get Weather</button>
-
-    @if (weatherData){
-      <h2>{{weatherData.name}}</h2>
-      <p>Temperature: {{weatherData.main.temp}}</p>
-      <p>Humidity: {{weatherData.main.humidity}}</p>
-      <p>Weather: {{weatherData.weather[0].description}}</p>
-    }
+<div class="w-fit card bg-base-100 shadow-xl rounded-2xl">
+  <form class="" (ngSubmit)="onSubmit()">
+    <div class="items-center card bg-primary text-primary-content">
+      <h2 class="card-title">{{city ? (city[0].toUpperCase() + city.substring(1)) : 'Enter a City'}}</h2>
+      <p><img src="{{iconURL}}" alt=""></p>
+      <div class="card-body text-center">
+        <p>Temperature: {{temperature}}°C</p>
+        <p>Feels like: {{feelsLikeTemp}}°C</p>
+        <p>Pressure: {{pressure}} Pa</p>
+        <p>Humidity: {{humidity}} %</p>
+        <p>Weather: {{summary}}</p>
+        <div class="items-center card-actions justify-end">
+          <input class="px-2 mx-2" type="text" [(ngModel)]="inputCity" name="inputCity" placeholder="Enter a city name">
+          <button class="btn btn-outline btn-info" type="submit">Get Weather</button>
+        </div>
+      </div>
+    </div>
   </form>
 </div>
+
