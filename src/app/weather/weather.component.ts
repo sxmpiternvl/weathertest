@@ -22,7 +22,6 @@ export class WeatherComponent implements OnInit {
   pressure: number = 0;
   summary: string = "";
   iconURL!: string;
-  error!: string;
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
@@ -42,13 +41,8 @@ export class WeatherComponent implements OnInit {
         this.iconURL = 'https://openweathermap.org/img/wn/' + this.weatherData.weather[0].icon + '@2x.png';
       },
       error: (err) => {
-        this.error = err.message;
-        alert('Error occurred')
-        console.error('Error occurred:', err);
+        alert(err.error.message)
       },
-      complete: () => {
-        console.log('Weather data retrieval completed');
-      }
     });
   }
 
@@ -56,3 +50,5 @@ export class WeatherComponent implements OnInit {
     this.getWeather(this.inputCity);
   }
 }
+
+//http requests  http errors observable next error responsetype
