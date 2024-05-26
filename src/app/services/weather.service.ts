@@ -14,7 +14,7 @@ export class WeatherService {
   getWeather(city: string) {
     const params = new HttpParams().set('units','metric')
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
-    return this.http.get<WeatherData>(url,{responseType:'json', params:params},)
+    return this.http.get<WeatherData>(url,{responseType:'json', params:params, observe:'response'},)
   }
 
 }
