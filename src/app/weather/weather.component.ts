@@ -43,9 +43,6 @@ export class WeatherComponent implements OnInit {
         this.summary = this.weatherData.body!.weather[0].main;
         this.iconURL = 'https://openweathermap.org/img/wn/' + this.weatherData.body!.weather[0].icon + '@2x.png';
       },
-      error: (err) => {
-        alert( err.error.cod + err.error.message)
-      }
     });
   }
 
