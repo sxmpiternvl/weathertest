@@ -33,7 +33,6 @@ export class WeatherComponent implements OnInit {
   getWeather(city: string) {
     this.weatherService.getWeather(city).subscribe({
       next: (data) => {
-        console.log(data)
         this.weatherData = data;
         this.city = city;
         this.temperature = this.weatherData.body!.main.temp;
